@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchPosts } from '../actions/index';
 
 class PostsIndex extends React.Component {
   componentWillMount() {
-    console.log('Good time to call action creator to fetch posts');
+    this.props.fetchPosts();
   }
 
   render() {
@@ -12,4 +14,8 @@ class PostsIndex extends React.Component {
   }
 }
 
-export default PostsIndex;
+//function mapDispatchToProps(dispatch) {
+//  return bindActionCreators({ fetchPosts }, dispatch);
+//}
+
+export default connect(null, { fetchPosts })(PostsIndex);
